@@ -1,0 +1,54 @@
+/**
+ * File:    OSGroundPlate.cga
+ * Created: 20 May 2016 10:15:39 GMT
+ * Author:  Virtual Architectures
+ */
+
+version "2014.0"
+
+//Map Attributes
+attr Descriptiv = "Road Or Track"
+attr Make = "Manmade"
+attr Theme = "Land"
+//Heights
+attr groundLevel = 6
+attr streetLevel = 5.8
+attr railLevel = 4
+attr waterLevel = 2
+//Colours
+attr waterColor = "#53c8d8"
+attr grassColor = "#a0db8e"
+attr pathColor = "#96895d"
+attr railColor = "#2d2616"
+attr roadColor = "#7c7c7c"
+attr pavingColor = "#c1c1c1"
+attr errorColor = "#821b12"
+
+@StartRule
+Lot --> 
+case Theme == "Buildings" : extrude(world.y, groundLevel) color(pavingColor)
+case Theme == "Buildings,Structures" : extrude(world.y, groundLevel) color(pavingColor)
+case Theme == "Buildings,Roads Tracks And Paths" : extrude(world.y, groundLevel) color(pavingColor)
+
+case Theme == "Land" : 
+	case Make == "Natural" : extrude(world.y, groundLevel) color(grassColor)
+	case Make == "Manmade" : extrude(world.y, groundLevel) color(pavingColor)
+	case Make == "Multiple" : extrude(world.y, groundLevel) color(pavingColor)
+	case Make == "Unclassified" : extrude(world.y, groundLevel) color(pavingColor)
+	else: null
+
+case Theme == "Land,Rail" : extrude(world.y, railLevel) color(railColor)
+case Theme == "Land,Roads Tracks And Paths" : extrude(world.y, groundLevel) color(pavingColor)
+case Theme == "Land,Structures" : extrude(world.y, groundLevel) color(pavingColor)
+case Theme == "Land,Water" : extrude(world.y, groundLevel) color(waterColor)
+case Theme == "Rail" : extrude(world.y, railLevel) color(railColor)
+case Theme == "Rail,Structures" : extrude(world.y, railLevel) color(railColor)
+case Theme == "Roads Tracks And Paths" : extrude(world.y, groundLevel) color(roadColor)
+
+case Theme == "Roads Tracks And Paths,Structures" : extrude(world.y, streetLevel) color(roadColor)
+//case Theme == "Roads Tracks And Paths,Structures" && Descriptiv == "Roadside" extrude(world.y, groundLevel) color(pavingColor)
+//case Theme == "Roads Tracks And Paths,Structures" && Descriptiv != "Roadside" extrude(world.y, streetLevel) color(roadColor)
+
+case Theme == "Structures" : extrude(world.y, groundLevel) color(pavingColor)
+case Theme == "Water" : extrude(world.y, waterLevel) color(waterColor)
+else: extrude(world.y, 1000) color(errorColor)

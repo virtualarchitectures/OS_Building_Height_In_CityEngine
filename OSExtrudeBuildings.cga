@@ -1,0 +1,16 @@
+/**
+ * File:    OSExtrudeBuildings.cga
+ * Created: 19 May 2016 18:28:59 GMT
+ * Author:  Virtual Architectures
+ */
+
+version "2014.0"
+
+attr relh2 = 0
+
+@StartRule
+Lot -->
+//Extrude on world axis to avoid issues with terrain
+extrude(world.y, relh2)
+translate(rel, world,0,6,0)
+
