@@ -11,3 +11,7 @@ This rule is applied to building foot prints that have the building height attri
 This rule can be used to generate a terrain for visualisation purposes in the absence of a Heightmap. This is achieved by selecting features from the Ordnance Survey MasterMap data (e.g. roads and pavements), extruding the selected polygons by a predefined amount, and translating the geometry for each type of feature vertically in order to create a terraced effect. The different layers can also be coloured to differentiate them.
 
 **Note:** The latter rule does not create an accurate terrain. Neither is it instended as a comprehensive rule for processing OS MasterMap data. Instead it is intended as a short demonstation of the possibilities for processing and visualising certain GIS data in CityEngine.
+
+# Acknowledgements
+
+These rules were created for demonstration purposes during research at The Bartlett Centre for Advanced Spatial Analysis (CASA). This research was jointly funded by the Ordnance Survey (OS) of Great Britain and the Engineering and Physical Science Research Council (EPSRC).
